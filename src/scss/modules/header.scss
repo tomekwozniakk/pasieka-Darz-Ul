@@ -1,0 +1,20 @@
+.header {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(/src/assets/img/bee_black.jpg);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+    &__title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 96px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        color: white;
+        font-size: 38px;
+    }
+}

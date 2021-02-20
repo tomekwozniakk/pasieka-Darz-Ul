@@ -1,0 +1,21 @@
+.history {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(/src/assets/img/bee__pollen.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    &__header{
+        width: 100%;
+        position: absolute;
+        top: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &-title{
+            color:black;
+            font-size: 32px;
+            text-align: center;
+        }
+    }
+}

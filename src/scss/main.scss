@@ -1,13 +1,41 @@
 @import "~normalize.css";
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
 @import "_variables";
-@import "modules/hello.scss";
+@import "modules/header.scss";
+@import "modules/nav.scss";
+@import "modules/main_element.scss";
+@import "modules/about.scss";
+@import "modules/history.scss";
+@import "modules/footer.scss";
 
-body {
-  background: $wtf;
-  color: #fff;
+html {
+  font-family: 'Raleway', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.arrow{
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  position: absolute;
+  left: calc(50% - 20px);
+  bottom: 20px;
   display: flex;
-  align-items: center;
+  align-items:center;
   justify-content: center;
-  min-height: 100vh;
+  transition: .2s linear;
+  &:hover{
+    background-color: rgba(95, 95, 95, 0.6);
+  }
+  &-image{
+    width: 75%;
+    transform: translateY(2px);
+  }
+}
+
+.facebook-link {
+  text-decoration: none;
+  color: blue;
 }
