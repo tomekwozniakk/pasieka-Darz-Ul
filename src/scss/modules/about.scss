@@ -93,6 +93,7 @@
         height: 25vh;
         margin: 6px 8px;
         padding: 8px 0;
+        overflow: hidden;
     }
     &__slider-arrow{
         width: 80%;
@@ -141,15 +142,19 @@
 @keyframes image {
     0% {
         opacity: 0;
+        transform: scale(1);
     }
     20% {
         opacity: 1;
+        transform: scale(1);
     }
     80% {
         opacity: 1;
+        transform: scale(1.02);
     }
     100% {
         opacity: 0;
+        transform: scale(1.02);
     }
 }
 
