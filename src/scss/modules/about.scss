@@ -17,6 +17,7 @@
         margin: 8px 16px;
         max-width: 768px;
         border-radius: 8px;
+        flex-basis: 50%;
         &--active{
             display: flex;
             flex-direction: column;
@@ -74,6 +75,25 @@
             margin: 72px 16px 32px 16px ;
         }
     }
+    &__images{
+        width: 100%;
+        flex-basis: 25vh;
+        display: none;
+    }
+    &__image{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+        border-radius: 8px;
+        animation: image 6s linear 0s infinite normal;
+    }
+    &__image-container{
+        width: 25vh;
+        height: 25vh;
+        margin: 6px 8px;
+        padding: 8px 0;
+    }
     &__slider-arrow{
         width: 80%;
     }
@@ -115,5 +135,28 @@
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes image {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .about__images {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
