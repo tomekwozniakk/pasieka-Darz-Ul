@@ -7,6 +7,7 @@
 @import "modules/main_element.scss";
 @import "modules/about.scss";
 @import "modules/history.scss";
+@import "modules/gallery.scss";
 @import "modules/footer.scss";
 
 html {
@@ -17,7 +18,7 @@ html {
 .arrow{
   width: 40px;
   height: 40px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(95, 95, 95, 0.6);
   border-radius: 50%;
   position: absolute;
   left: calc(50% - 20px);
@@ -27,7 +28,7 @@ html {
   justify-content: center;
   transition: .2s linear;
   &:hover{
-    background-color: rgba(95, 95, 95, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
   }
   &-image{
     width: 75%;
