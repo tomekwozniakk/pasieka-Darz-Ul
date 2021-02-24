@@ -13,6 +13,11 @@
 html {
   font-family: 'Raleway', sans-serif;
   scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*{
+  box-sizing: inherit;
 }
 
 .arrow{

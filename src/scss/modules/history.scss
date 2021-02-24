@@ -16,11 +16,9 @@
         justify-content: center;
         background-color: rgba(255,255,255,0.8);
         margin: 8px 16px ;
-        padding: 0 8px;
         border-radius: 8px;
         position: relative;
-        transform: translateY(0);
-        opacity: 1;
+        transition: .3s linear;
         &--active{
             animation: historyArticle 1s linear 0s 1 normal both;
         }
@@ -33,15 +31,20 @@
             height: 16px;
             top: calc(50% - 8px);
             left: calc(0px - 16px - 8px + 1px);
+            transition: .3s linear;
+            & circle{
+                transition: .3s linear;
+            }
         }
         &-header{
             padding: 8px;
             width: 100%;
             background-color: rgba(252, 178, 178, 0.5);
             border-radius: 8px 8px 0 0;
-        }
-        &-more {
-            // position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: .3s linear;
         }
         &-text{
             width: 100%;
@@ -59,7 +62,7 @@
         min-height: 50vh;
         position: relative;
         padding: 12px;
-        margin: 0 16px;
+        margin: 0 24px;
         margin-bottom: 72px;
         border-radius: 8px;
         &::before{
@@ -71,6 +74,9 @@
             background:linear-gradient( rgba(255,255,255,0)0%,  rgba(255,255,255,0.2) 10%,  rgba(255,255,255,0.7) 20%,  rgba(255,255,255,0.7) 80%,  rgba(255,255,255,0.2) 90%,  rgba(255,255,255,0) 100%)
         }
         }
+    }
+    &__button-more{
+        border: 1px solid #bbb;
     }
     &__header{
         width: 100%;
@@ -86,6 +92,8 @@
     }
 }
 
+
+
 @keyframes historyArticle {
     0% {
         transform: translateY(150%);
@@ -94,5 +102,26 @@
     100% {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+@media(min-width:768px) {
+    .history__article-container{
+        min-width:768px;
+    }
+    .history__article:hover .history__article-header{
+        background-color: rgba(204, 72, 105, 0.5);
+    }
+    
+    .history__article:hover .history__article-circle circle{
+        fill: rgb(236, 78, 105);
+    }
+    
+    .history__article:hover .history__article-circle {
+        left: calc(0px - 36px - 8px + 1px);
+    }
+    
+    .history__article--active:hover {
+        margin-left: 36px;
     }
 }

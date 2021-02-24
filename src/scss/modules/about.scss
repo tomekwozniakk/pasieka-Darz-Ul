@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 100vh;
     background:linear-gradient(rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 10%, rgba(255,255,255,0) 90%, rgba(255,255,255,0.9) 100% ), url(/src/assets/img/flower_bees.jpg);
-    background-position: top;
+    background-position: top right;
     background-size: cover;
     position: relative;
     display: flex;
@@ -10,11 +10,11 @@
     justify-content: center;
     flex-direction: column;
     &__article {
+        display: none;
         color: black;
         background-color: rgba(255,255,255,0.8);
         padding: 8px 12px;
-        display: none;
-        margin: 8px 16px;
+        margin: 0px 16px 8px;
         max-width: 768px;
         border-radius: 8px;
         flex-basis: 50%;
@@ -24,7 +24,12 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            animation: slideIn .3s linear 0s 1 normal;
+            &-left{
+                animation: slideLeft .3s linear 0s 1 normal both;
+            }
+            &-right{
+                animation: slideRight .3s linear 0s 1 normal both;
+            }
         }
         &-text{
             flex-basis: 75%;
@@ -42,6 +47,11 @@
             }
         }
     }
+    &-container {
+        width: 100%;
+        max-width: 768px;
+        overflow: hidden;
+    }
     &__circle{
         width: 12px;
         height: 100%;
@@ -54,6 +64,7 @@
         &-container{
         width: 70px;
         height: 12px;
+        margin-bottom: 36px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -64,15 +75,13 @@
     }
     &__header{
         width: 100%;
-        position: absolute;
-        top: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         &-title{
             color:black;
             font-size: 32px;
-            margin: 72px 16px 32px 16px ;
+            margin: 32px 16px 32px 16px ;
         }
     }
     &__images{
@@ -121,6 +130,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 2;
         &--left{
             left: 0;
         }
@@ -136,6 +146,28 @@
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes slideLeft{
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight{
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 

@@ -43,14 +43,15 @@ const circleDiv = document.querySelector(".about__circle-container");
 BtnLeft.addEventListener("click", function () {
   let activeArticle = document.querySelector(".about__article--active");
   let i = articles.indexOf(activeArticle, 0);
-  articles[i].classList.remove("about__article--active");
+  articles[i].classList.remove(...articles[i].classList);
+  articles[i].classList.add('about__article');
   circles[i].classList.remove("about__circle--active");
 
   if (i === 0) {
-    articles[articles.length - 1].classList.add("about__article--active");
+    articles[articles.length - 1].classList.add("about__article--active", "about__article--active-left");
     circles[articles.length - 1].classList.add("about__circle--active");
   } else {
-    articles[i - 1].classList.add("about__article--active");
+    articles[i - 1].classList.add("about__article--active", "about__article--active-left");
     circles[i - 1].classList.add("about__circle--active");
   }
   circleDiv.classList.add("about__circle-container--active");
@@ -72,14 +73,15 @@ BtnRight.addEventListener("click", function () {
   let activeArticle = document.querySelector(".about__article--active");
 
   let i = articles.indexOf(activeArticle, 0);
-  articles[i].classList.remove("about__article--active");
+  articles[i].classList.remove(...articles[i].classList);
+  articles[i].classList.add('about__article');
   circles[i].classList.remove("about__circle--active");
 
   if (i === articles.length - 1) {
-    articles[0].classList.add("about__article--active");
+    articles[0].classList.add("about__article--active", "about__article--active-right");
     circles[0].classList.add("about__circle--active");
   } else {
-    articles[i + 1].classList.add("about__article--active");
+    articles[i + 1].classList.add("about__article--active", "about__article--active-right");
     circles[i + 1].classList.add("about__circle--active");
   }
   circleDiv.classList.add("about__circle-container--active");
@@ -183,12 +185,9 @@ window.addEventListener('scroll', function(){
   for(let i = 0; i < historyArticles.length;i++ ){
   let rect = historyArticles[i].getBoundingClientRect();
   let top = scrollTop + rect.top;
-  // console.log(rect.top);
-  if(top<scrollTop + window.innerHeight - (historyArticles[i].offsetHeight / 2)){
-    if(historyArticles[i].classList.contains('history__article--active')){
-      ;
-    }
-    else{
+  
+  if(top<=scrollTop + window.innerHeight + (historyArticles[i].offsetHeight/4)){
+    if(!historyArticles[i].classList.contains('history__article--active')){
     historyArticles[i].classList.remove('history__article--inactive');
     historyArticles[i].classList.remove('history__article--active');
     void historyArticles[i].offsetWidth;
@@ -196,14 +195,52 @@ window.addEventListener('scroll', function(){
     }
   }
   else{
-    if(historyArticles[i].classList.contains('history__article--inactive')){
-      ;
-    } else{
-    historyArticles[i].classList.remove('history__article--active');
+    if(!historyArticles[i].classList.contains('history__article--inactive')){
+      historyArticles[i].classList.remove('history__article--active');
     historyArticles[i].classList.remove('history__article--inactive');
     void historyArticles[i].offsetWidth;
     historyArticles[i].classList.add('history__article--inactive');
-  }
+      ;
+    } 
+ 
 }
 }
 })
+
+// Gallery slider
+const gap = 16;
+const imgWidth = 180;
+
+const carousel = document.querySelector('.gallery__carousel');
+const content = document.querySelector('.gallery__content');
+const prev = document.querySelector('.gallery__slider-previous');
+const next = document.querySelector('.gallery__slider-next');
+
+next.addEventListener("click", function(e){
+  carousel.scrollBy(imgWidth + gap, 0);
+})
+
+prev.addEventListener("click", function(e){
+  carousel.scrollBy(-(imgWidth + gap), 0);
+})
+
+// gallery swap big image on click
+
+let imagesSmall = []
+
+function getImages(){
+  for(let i = 0; i < document.querySelectorAll('.gallery__image-small').length; i++){
+    let imageSmall = document.querySelectorAll('.gallery__image-small')[i];
+    imagesSmall.push(imageSmall);
+  }
+}
+getImages();
+console.log(imagesSmall);
+
+let imageBig = document.querySelector('.gallery__image-big');
+
+for(let i = 0; i < imagesSmall.length; i++){
+  imagesSmall[i].addEventListener('click', function(){
+    imageBig.src = this.src;
+  })
+}
