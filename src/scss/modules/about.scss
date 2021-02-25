@@ -1,14 +1,7 @@
 .about {
-    width: 100%;
-    min-height: 100vh;
     background:linear-gradient(rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 10%, rgba(255,255,255,0) 90%, rgba(255,255,255,0.9) 100% ), url(/src/assets/img/flower_bees.jpg);
     background-position: top right;
-    background-size: cover;
     position: relative;
-    display: flex;
-    align-items:center;
-    justify-content: center;
-    flex-direction: column;
     &__article {
         display: none;
         color: black;

@@ -242,5 +242,6 @@ let imageBig = document.querySelector('.gallery__image-big');
 for(let i = 0; i < imagesSmall.length; i++){
   imagesSmall[i].addEventListener('click', function(){
     imageBig.src = this.src;
+    imageBig.alt = this.alt;
   })
 }
