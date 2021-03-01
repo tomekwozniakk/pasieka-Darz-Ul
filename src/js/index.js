@@ -57,13 +57,13 @@ BtnLeft.addEventListener("click", function (e) {
 
   let header = articles[i].querySelector(".about__images");
   header.innerHTML = `<div class="about__image-container">
-              <img src="img/party_time.jpg" alt="" class="about__image about__image--first">
+              <img src="../img/party_time.jpg" alt="" class="about__image about__image--first">
             </div>
             <div class="about__image-container">
-              <img src="img/smoke.jpg" alt="" class="about__image about__image--second">
+              <img src="../img/smoke.jpg" alt="" class="about__image about__image--second">
             </div>
             <div class="about__image-container">
-              <img src="img/working_in_sunset.jpg" alt="" class="about__image about__image--third">
+              <img src="../img/working_in_sunset.jpg" alt="" class="about__image about__image--third">
             </div>`;
   
   
