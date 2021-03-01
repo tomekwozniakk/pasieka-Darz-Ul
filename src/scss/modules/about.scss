@@ -64,6 +64,7 @@
   }
   &-carousel{
     overflow: auto;
+    touch-action: none;
     scroll-behavior: smooth;
     scrollbar-width: none;
     &::-webkit-scrollbar {
