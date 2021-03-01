@@ -6,6 +6,9 @@ import "../scss/main.scss";
 
 /* place your code below */
 
+function requireAll(r) { r.keys().forEach(r); }
+requireAll(require.context('../assets/img/', true));
+
 // slider in "about" section
 
 let articles = [];

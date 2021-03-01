@@ -64,7 +64,7 @@
   }
   &-carousel{
     overflow: auto;
-    touch-action: none;
+    touch-action: pan-y;
     scroll-behavior: smooth;
     scrollbar-width: none;
     &::-webkit-scrollbar {
