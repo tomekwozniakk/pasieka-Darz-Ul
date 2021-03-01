@@ -82,13 +82,13 @@ BtnRight.addEventListener("click", function () {
   circles[i].classList.add("about__circle--active");
   let header = articles[i].querySelector(".about__images");
   header.innerHTML = `<div class="about__image-container">
-              <img src="img/party_time.jpg" alt="j" class="about__image about__image--first">
+              <img src="../assets/img/party_time.jpg" alt="j" class="about__image about__image--first">
             </div>
             <div class="about__image-container">
-              <img src="img/smoke.jpg" alt="j" class="about__image about__image--second">
+              <img src="../assets/img/smoke.jpg" alt="j" class="about__image about__image--second">
             </div>
             <div class="about__image-container">
-              <img src="img/working_in_sunset.jpg" alt="j" class="about__image about__image--third">
+              <img src="../assets/img/working_in_sunset.jpg" alt="j" class="about__image about__image--third">
             </div>`;
   
   
