@@ -9,10 +9,11 @@
   background-position: center;
   position: relative;
   &__article {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color:$gallery-background;
     width: 100%;
     max-width: 996px;
     padding: 16px 0 0 0;
+    backdrop-filter: blur(8px);
   }
   &__carousel {
     overflow: auto;
@@ -89,12 +90,12 @@
     }
     &-next {
       right: 0;
-      transform: translate(25%, -50%);
+      transform: translate(-25%, -50%);
     }
     &-previous {
       left: 0;
       
-      transform: translate(-25%, -50%);
+      transform: translate(25%, -50%);
     }
   }
   &__wrapper {

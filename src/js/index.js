@@ -37,26 +37,25 @@ getCircles();
 const BtnLeft = document.querySelector(".about__slider-button--left");
 const BtnRight = document.querySelector(".about__slider-button--right");
 const circleDiv = document.querySelector(".about__circle-container");
+const articlesContainer = document.querySelector(".about-carousel");
+let i = 0;
+const articleWidth = articles[0].getBoundingClientRect().width;
+const articleGap = 16;
+console.log(articleWidth);
+
 
 // add event listeners on buttons
 
-BtnLeft.addEventListener("click", function () {
-  let activeArticle = document.querySelector(".about__article--active");
-  let i = articles.indexOf(activeArticle, 0);
-  articles[i].classList.remove(...articles[i].classList);
-  articles[i].classList.add('about__article');
-  circles[i].classList.remove("about__circle--active");
-
-  if (i === 0) {
-    articles[articles.length - 1].classList.add("about__article--active", "about__article--active-left");
-    circles[articles.length - 1].classList.add("about__circle--active");
-  } else {
-    articles[i - 1].classList.add("about__article--active", "about__article--active-left");
-    circles[i - 1].classList.add("about__circle--active");
+BtnLeft.addEventListener("click", function (e) {
+  if(i===0){
+    return;
   }
-  circleDiv.classList.add("about__circle-container--active");
-  activeArticle = document.querySelector(".about__article--active");
-  let header = activeArticle.querySelector(".about__images");
+  articlesContainer.scrollBy(-(articleWidth + articleGap), 0);
+  circles[i].classList.remove("about__circle--active");
+  i--;
+  circles[i].classList.add("about__circle--active");
+
+  let header = articles[i].querySelector(".about__images");
   header.innerHTML = `<div class="about__image-container">
               <img src="/src/assets/img/party_time.jpg" alt="" class="about__image about__image--first">
             </div>
@@ -66,27 +65,22 @@ BtnLeft.addEventListener("click", function () {
             <div class="about__image-container">
               <img src="/src/assets/img/working_in_sunset.jpg" alt="" class="about__image about__image--third">
             </div>`;
+  
+  
   switcher();
+  console.log(i);
 });
 
 BtnRight.addEventListener("click", function () {
-  let activeArticle = document.querySelector(".about__article--active");
-
-  let i = articles.indexOf(activeArticle, 0);
-  articles[i].classList.remove(...articles[i].classList);
-  articles[i].classList.add('about__article');
-  circles[i].classList.remove("about__circle--active");
-
-  if (i === articles.length - 1) {
-    articles[0].classList.add("about__article--active", "about__article--active-right");
-    circles[0].classList.add("about__circle--active");
-  } else {
-    articles[i + 1].classList.add("about__article--active", "about__article--active-right");
-    circles[i + 1].classList.add("about__circle--active");
+  if(i === articles.length - 1){
+    return;
   }
-  circleDiv.classList.add("about__circle-container--active");
-  activeArticle = document.querySelector(".about__article--active");
-  let header = activeArticle.querySelector(".about__images");
+  articlesContainer.scrollBy(articleWidth + articleGap, 0);
+
+  circles[i].classList.remove("about__circle--active");
+  i++;
+  circles[i].classList.add("about__circle--active");
+  let header = articles[i].querySelector(".about__images");
   header.innerHTML = `<div class="about__image-container">
               <img src="/src/assets/img/party_time.jpg" alt="" class="about__image about__image--first">
             </div>
@@ -96,7 +90,10 @@ BtnRight.addEventListener("click", function () {
             <div class="about__image-container">
               <img src="/src/assets/img/working_in_sunset.jpg" alt="" class="about__image about__image--third">
             </div>`;
+  
+  
   switcher();
+  console.log(i);
 });
 
 // switching images
@@ -112,13 +109,13 @@ function switchImage(image, urls, alts) {
     if (i >= sources.length) {
       i = 0;
     }
-    image.alt = alts[i];
+    image.alt = descriptions[i];
     image.src = sources[i++];
   }, 6000);
 }
 
 function switcher() {
-  let activeArticle = document.querySelector(".about__article--active");
+  let activeArticle = articles[i];
   let imageFirst = activeArticle.querySelector(".about__image--first");
   let imageSecond = activeArticle.querySelector(".about__image--second");
   let imageThird = activeArticle.querySelector(".about__image--third");
@@ -235,7 +232,6 @@ function getImages(){
   }
 }
 getImages();
-console.log(imagesSmall);
 
 let imageBig = document.querySelector('.gallery__image-big');
 

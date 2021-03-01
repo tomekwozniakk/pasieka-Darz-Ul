@@ -7,12 +7,14 @@
     url(/src/assets/img/bee_closeup.jpg);
   background-position:bottom center;
   background-size: cover;
+  
   position: relative;
   &__article {
     flex-basis: 50%;
     width: 100%;
     max-width: 768px;
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: $article-background;
+    backdrop-filter: blur(8px);
     &-text {
       color: black;
       padding: 8px 16px;
@@ -29,10 +31,12 @@
     align-items: center;
     justify-content: flex-start;
     padding-left: 24px;
-    &--phone {
+    font-weight: 700;
+    &--facebook {
+        
     }
     &--address {
-      font-weight: 700;
+      
     }
   }
   &__header {
@@ -42,7 +46,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 32px 16px 32px 16px;
+    margin: 32px 0;
     &-title {
       font-size: 32px;
     }
@@ -51,6 +55,7 @@
     fill: #4da8ff;
     &-facebook {
       border-radius: 4px;
+      background-color: white;
     }
   }
   &__link {
@@ -64,9 +69,8 @@
   &__send {
     padding: 16px;
     text-decoration: none;
-    color: white;
-    font-weight: 700;
-    background-color: #1070ca;
+    color: rgb(0, 0, 0);
+    background-color: #fdfa5081;
     border-radius: 16px;
   }
   &__wrapper {
@@ -88,6 +92,7 @@
       grid-template-columns: 1fr 1fr;
       row-gap: 16px;
       margin-top: 16px;
+      margin-bottom: 32px;
     }
     &__element{
         &--address{

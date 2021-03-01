@@ -1,19 +1,99 @@
 .header {
   width: 100%;
-  min-height: 100vh;
-  background:url(/src/assets/img/bee_black.jpg);
+  min-height: calc(100vh - 50px);
+  margin-top: 50px;
+  background-image:url(/src/assets/img/bee_black.jpg);
   background-position: center;
   background-size: cover;
+  position: relative;
+  animation: bgd .5s ease-in-out 0s 1 normal both;
+    &__logo{
+      position: absolute;
+      top: 64px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
     &__title {
         position: absolute;
         top: 0;
-        left: 0;
-        margin-top: 96px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
+        left: 50%;
+        margin-top: 28px;
+        margin-right: 16px;
         color: white;
-        font-size: 38px;
+        font-size: 36px;
+        animation: header .5s linear .5s 1 normal both;
+        white-space: nowrap;
+        z-index: 4;
     }
+}
+
+@keyframes headerLine {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    height: 100%;
+  }
+}
+
+@keyframes header {
+  0% {
+    opacity: 0;
+    transform: translateX(-60%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes bgd {
+  0%{
+    opacity: 0.3;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes logo {
+  0%{
+    margin-top: -80px;
+  }
+  100%{
+    margin-top: 196px;
+  }
+}
+
+@media(min-width:768px) {
+  .header {
+    background-image:linear-gradient(90deg, rgb(253, 233, 119) 0%,  rgba(253, 233, 119, 0.1) 30%, rgba(255,255,255,0) 30.01%,  rgba(255,255,255,0) 100%),url(/src/assets/img/bee_black.jpg);
+      &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 30%;
+        height: 100%;
+        background-color: white;
+        width: 4px;
+        z-index: 2;
+        animation: headerLine 1s ease-in-out 0s 1 normal both;
+      }
+      &__logo{
+        top: 0;
+        left: 30%;
+        margin-top: 196px;
+        transform: translateX(-50%);
+        z-index: 3;
+        animation: logo 1s ease-in-out 0s 1 normal both;
+      }
+      &__title{
+        margin-top: 72px;
+        font-size: 54px;
+      }
+}
 }
