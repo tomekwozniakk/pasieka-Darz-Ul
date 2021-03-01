@@ -57,13 +57,13 @@ BtnLeft.addEventListener("click", function (e) {
 
   let header = articles[i].querySelector(".about__images");
   header.innerHTML = `<div class="about__image-container">
-              <img src="/src/assets/img/party_time.jpg" alt="" class="about__image about__image--first">
+              <img src="../src/assets/img/party_time.jpg" alt="" class="about__image about__image--first">
             </div>
             <div class="about__image-container">
-              <img src="/src/assets/img/smoke.jpg" alt="" class="about__image about__image--second">
+              <img src="../src/assets/img/smoke.jpg" alt="" class="about__image about__image--second">
             </div>
             <div class="about__image-container">
-              <img src="/src/assets/img/working_in_sunset.jpg" alt="" class="about__image about__image--third">
+              <img src="../src/assets/img/working_in_sunset.jpg" alt="" class="about__image about__image--third">
             </div>`;
   
   
@@ -82,13 +82,13 @@ BtnRight.addEventListener("click", function () {
   circles[i].classList.add("about__circle--active");
   let header = articles[i].querySelector(".about__images");
   header.innerHTML = `<div class="about__image-container">
-              <img src="/src/assets/img/party_time.jpg" alt="" class="about__image about__image--first">
+              <img src="../src/assets/img/party_time.jpg" alt="" class="about__image about__image--first">
             </div>
             <div class="about__image-container">
-              <img src="/src/assets/img/smoke.jpg" alt="" class="about__image about__image--second">
+              <img src="../src/assets/img/smoke.jpg" alt="" class="about__image about__image--second">
             </div>
             <div class="about__image-container">
-              <img src="/src/assets/img/working_in_sunset.jpg" alt="" class="about__image about__image--third">
+              <img src="../src/assets/img/working_in_sunset.jpg" alt="" class="about__image about__image--third">
             </div>`;
   
   
@@ -123,10 +123,10 @@ function switcher() {
   switchImage(
     imageFirst,
     [
-      "/src/assets/img/garden.jpg",
-      "/src/assets/img/apples.jpg",
-      "/src/assets/img/table.jpg",
-      "/src/assets/img/party_time.jpg"
+      "../assets/img/garden.jpg",
+      "../assets/img/apples.jpg",
+      "../assets/img/table.jpg",
+      "../assets/img/party_time.jpg"
     ],
     ["our garden", 
     "red apples on a tree", 
@@ -135,10 +135,10 @@ function switcher() {
   );
 
   switchImage(imageSecond, [
-    "/src/assets/img/backyard.jpg",
-    "/src/assets/img/bread_sliced.jpg",
-    "/src/assets/img/fence.jpg",
-    "/src/assets/img/smoke.jpg"
+    "../assets/img/backyard.jpg",
+    "../assets/img/bread_sliced.jpg",
+    "../assets/img/fence.jpg",
+    "../assets/img/smoke.jpg"
   ],
   ["our backyard",
   "fresh sliced bread",
@@ -148,10 +148,10 @@ function switcher() {
   );
 
   switchImage(imageThird, [
-    "/src/assets/img/house_sunset.jpg",
-    "/src/assets/img/backyard_2.jpg",
-    "/src/assets/img/parcel.jpg",
-    "/src/assets/img/working_in_sunset.jpg"
+    "../assets/img/house_sunset.jpg",
+    "../assets/img/backyard_2.jpg",
+    "../assets/img/parcel.jpg",
+    "../assets/img/working_in_sunset.jpg"
   ],
   ["sunset behind apihouse",
   "our backyard",
