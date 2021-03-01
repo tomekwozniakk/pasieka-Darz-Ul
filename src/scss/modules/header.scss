@@ -70,7 +70,7 @@
 
 @media(min-width:768px) {
   .header {
-    background-image:linear-gradient(90deg, rgb(253, 233, 119) 0%,  rgba(253, 233, 119, 0.1) 30%, rgba(255,255,255,0) 30.01%,  rgba(255,255,255,0) 100%),url(/src/assets/img/bee_black.jpg);
+    background-image:linear-gradient(90deg, rgb(253, 233, 119) 0%,  rgba(253, 233, 119, 0.1) 30%, rgba(255,255,255,0) 30.01%,  rgba(255,255,255,0) 100%),url(../assets/img/bee_black.jpg);
       &::after{
         content: '';
         display: block;
