@@ -6,7 +6,7 @@
       rgba(255, 255, 255, 0.9) 100%
     ),
     url(../assets/img/bee_yellow.jpg);
-  background-position: right 75%;
+  background-position: left center;
   position: relative;
   &__article {
     display: flex;
@@ -78,7 +78,7 @@
     justify-content: center;
     margin: 32px 0;
     &-title {
-      color: black;
+      color: white;
       font-size: 32px;
     }
   }

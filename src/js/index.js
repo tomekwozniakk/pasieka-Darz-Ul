@@ -178,13 +178,29 @@ function getHistoryArticles() {
 
 getHistoryArticles();
 
+// Throttle scroll function
+function throttle(callback, limit){
+  let waiting = false;
+  return function(){
+    if(!waiting) {
+      callback.apply(this, arguments);
+      waiting = true;
+      setTimeout(function(){
+        waiting = false
+      }, limit);
+    }
+  }
+};
 
-window.addEventListener('scroll', function(){
+
+// scroll function with implemented throttle
+window.addEventListener('scroll', throttle(function(){
   let scrollTop = window.pageYOffset;
   
   for(let i = 0; i < historyArticles.length;i++ ){
   let rect = historyArticles[i].getBoundingClientRect();
   let top = scrollTop + rect.top;
+  console.log("scrollTop");
   
   if(top<=scrollTop + window.innerHeight + (historyArticles[i].offsetHeight/4)){
     if(!historyArticles[i].classList.contains('history__article--active')){
@@ -205,7 +221,7 @@ window.addEventListener('scroll', function(){
  
 }
 }
-})
+}, 200));
 
 // Gallery slider
 const gap = 16;

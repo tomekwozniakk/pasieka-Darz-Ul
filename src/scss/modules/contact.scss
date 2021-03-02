@@ -32,12 +32,12 @@
     justify-content: flex-start;
     padding-left: 24px;
     font-weight: 700;
-    &--facebook {
+    // &--facebook {
         
-    }
-    &--address {
+    // }
+    // &--address {
       
-    }
+    // }
   }
   &__header {
     color: white;
@@ -52,10 +52,8 @@
     }
   }
   &__icon {
-    fill: #4da8ff;
     &-facebook {
       border-radius: 4px;
-      background-color: white;
     }
   }
   &__link {
