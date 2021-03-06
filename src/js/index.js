@@ -39,7 +39,6 @@ getCircles();
 
 const BtnLeft = document.querySelector(".about__slider-button--left");
 const BtnRight = document.querySelector(".about__slider-button--right");
-const circleDiv = document.querySelector(".about__circle-container");
 const articlesContainer = document.querySelector(".about-carousel");
 let i = 0;
 const articleWidth = articles[0].getBoundingClientRect().width;
@@ -49,7 +48,7 @@ console.log(articleWidth);
 
 // add event listeners on buttons
 
-BtnLeft.addEventListener("click", function (e) {
+BtnLeft.addEventListener("click", throttle(function() {
   if(i===0){
     return;
   }
@@ -57,7 +56,6 @@ BtnLeft.addEventListener("click", function (e) {
   circles[i].classList.remove("about__circle--active");
   i--;
   circles[i].classList.add("about__circle--active");
-
   let header = articles[i].querySelector(".about__images");
   header.innerHTML = `<div class="about__image-container">
               <img src="img/party_time.jpg" alt="j" class="about__image about__image--first">
@@ -68,13 +66,11 @@ BtnLeft.addEventListener("click", function (e) {
             <div class="about__image-container">
               <img src="img/working_in_sunset.jpg" alt="j" class="about__image about__image--third">
             </div>`;
-  
-  
   switcher();
   console.log(i);
-});
+}, 500));
 
-BtnRight.addEventListener("click", function () {
+BtnRight.addEventListener("click", throttle(function() {
   if(i === articles.length - 1){
     return;
   }
@@ -93,11 +89,9 @@ BtnRight.addEventListener("click", function () {
             <div class="about__image-container">
               <img src="img/working_in_sunset.jpg" alt="j" class="about__image about__image--third">
             </div>`;
-  
-  
   switcher();
   console.log(i);
-});
+}, 500));
 
 // switching images
 
@@ -228,7 +222,6 @@ const gap = 16;
 const imgWidth = 180;
 
 const carousel = document.querySelector('.gallery__carousel');
-const content = document.querySelector('.gallery__content');
 const prev = document.querySelector('.gallery__slider-previous');
 const next = document.querySelector('.gallery__slider-next');
 

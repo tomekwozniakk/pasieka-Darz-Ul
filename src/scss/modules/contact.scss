@@ -18,7 +18,7 @@
     &-text {
       color: black;
       padding: 8px 16px;
-      text-align: center;
+      text-align: left;
     }
   }
   &__content {
@@ -86,6 +86,11 @@
 
 @media (min-width: 768px) {
   .contact {
+    &__article{
+      &-text{
+        text-align: center;
+      }
+    }
     &__content {
       grid-template-columns: 1fr 1fr;
       row-gap: 16px;

@@ -1,121 +1,141 @@
 .history {
-    background:linear-gradient(rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 10%, rgba(255,255,255,0) 90%, rgba(255,255,255,0.9) 100% ), url(../assets/img/bee__pollen.jpg);
-    background-position: center bottom;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0) 10%,
+      rgba(255, 255, 255, 0) 90%,
+      rgba(255, 255, 255, 0.9) 100%
+    ),
+    url(../assets/img/bee__pollen.jpg);
+  background-position: center bottom;
+  position: relative;
+  &__article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    // width: 500px;
+    // height: 250px;
+    background-color: $article-background;
+    margin: 8px 16px;
+    border-radius: 8px;
     position: relative;
-    &__article{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: $article-background;
-        margin: 8px 16px ;
-        border-radius: 8px;
-        position: relative;
-        transition: .3s linear;
-        backdrop-filter: blur(8px);
-        &--active{
-            animation: historyArticle 1s linear 0s 1 normal both;
-        }
-        &--inactive{
-            animation: historyArticle 1s linear 0s 1 reverse both;
-        }
-        &-circle{
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            top: calc(50% - 8px);
-            left: calc(0px - 16px - 8px + 1px);
-            transition: .3s linear;
-            & circle{
-                transition: .3s linear;
-            }
-        }
-        &-header{
-            padding: 8px;
-            width: 100%;
-            background-color: rgba(252, 178, 178, 0.5);
-            border-radius: 8px 8px 0 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: .3s linear;
-        }
-        &-text{
-            width: 100%;
-            padding: 8px;
-        }
-        &-title{
-            margin:0;
-        }
-        &-container{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        max-width: 90vw;
-        min-height: 50vh;
-        position: relative;
-        padding: 12px;
-        margin: 0 24px;
-        margin-bottom: 72px;
-        border-radius: 8px;
-        &::before{
-            content: '';
-            display: block;
-            width: 2px;
-            height: 100%;
-            position: absolute;
-            background:linear-gradient( rgba(255,255,255,0)0%,  rgba(255,255,255,0.2) 10%,  rgba(255,255,255,0.7) 20%,  rgba(255,255,255,0.7) 80%,  rgba(255,255,255,0.2) 90%,  rgba(255,255,255,0) 100%)
-        }
-        }
+    transition: 0.3s linear;
+    backdrop-filter: blur(8px);
+    &--active {
+      animation: historyArticle 1s linear 0s 1 normal both;
     }
-    &__button-more{
-        border: 1px solid #bbb;
+    &--inactive {
+      animation: historyArticle 1s linear 0s 1 reverse both;
     }
-    &__header{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        &-title{
-            color:black;
-            font-size: 32px;
-            margin: 72px 16px 32px 16px ;
-            text-align: center;
-        }
+    &-circle {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: calc(50% - 8px);
+      left: calc(0px - 16px - 8px + 1px);
+      transition: 0.3s linear;
+      & circle {
+        transition: 0.3s linear;
+      }
     }
+    &-header {
+      padding: 8px;
+      width: 100%;
+      background-color: rgba(252, 178, 178, 0.5);
+      border-radius: 8px 8px 0 0;
+      flex-basis: 20%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: 0.3s linear;
+    }
+    &-text {
+      padding: 8px;
+      margin: 0;
+      width: 100%;
+      flex-basis: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    &-title {
+      margin: 0;
+    }
+    &-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      max-width: 90vw;
+      min-height: 50vh;
+      position: relative;
+      padding: 12px;
+      margin: 0 24px;
+      margin-bottom: 72px;
+      border-radius: 8px;
+      &::before {
+        content: "";
+        display: block;
+        width: 2px;
+        height: 100%;
+        position: absolute;
+        background: linear-gradient(
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.2) 10%,
+          rgba(255, 255, 255, 0.7) 20%,
+          rgba(255, 255, 255, 0.7) 80%,
+          rgba(255, 255, 255, 0.2) 90%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+    }
+  }
+  &__button-more {
+    border: 1px solid #bbb;
+  }
+  &__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-title {
+      color: black;
+      font-size: 32px;
+      margin: 72px 16px 32px 16px;
+      text-align: center;
+    }
+  }
 }
-
-
 
 @keyframes historyArticle {
-    0% {
-        transform: translateY(150%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-@media(min-width:768px) {
-    .history__article-container{
-        min-width:768px;
-    }
-    .history__article:hover .history__article-header{
-        background-color: rgba(204, 72, 105, 0.5);
-    }
-    
-    .history__article:hover .history__article-circle circle{
-        fill: rgb(236, 78, 105);
-    }
-    
-    .history__article:hover .history__article-circle {
-        left: calc(0px - 36px - 8px + 1px);
-    }
-    
-    .history__article--active:hover {
-        margin-left: 36px;
-    }
+@media (min-width: 768px) {
+  .history__article-container {
+    min-width: 768px;
+  }
+  .history__article:hover .history__article-header {
+    background-color: rgba(204, 72, 105, 0.5);
+  }
+
+  .history__article:hover .history__article-circle circle {
+    fill: rgb(236, 78, 105);
+  }
+
+  .history__article:hover .history__article-circle {
+    left: calc(0px - 36px - 8px + 1px);
+  }
+
+  .history__article--active:hover {
+    margin-left: 36px;
+  }
 }
