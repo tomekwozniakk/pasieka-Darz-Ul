@@ -277,7 +277,11 @@ function getImages() {
 }
 getImages();
 
-let imageBig = document.querySelector(".gallery__image-big");
+let imageBig = document.querySelector('.gallery__image-big');
+let imagePopup = document.querySelector('.gallery__popup-image');
+let popup = document.querySelector('.gallery__popup');
+let popupText = document.querySelector('.gallery__popup-description');
+let cross = document.querySelector('.gallery__popup-icon-container')
 
 for (let i = 0; i < imagesSmall.length; i++) {
   imagesSmall[i].addEventListener("click", function () {
@@ -286,3 +290,18 @@ for (let i = 0; i < imagesSmall.length; i++) {
     imageBig.alt = this.alt;
   });
 }
+
+imageBig.addEventListener("click", function(){
+  document.body.classList.add('modal-open');
+  popup.classList.remove('gallery__popup');
+  popup.classList.add('gallery__popup--active');
+  imagePopup.src = imageBig.src;
+  imagePopup.alt = imageBig.alt;
+  popupText.innerHTML = imagePopup.alt;
+});
+
+cross.addEventListener("click", function(){
+  document.body.classList.remove('modal-open');
+  popup.classList.remove('gallery__popup--active');
+  popup.classList.add('gallery__popup');
+})

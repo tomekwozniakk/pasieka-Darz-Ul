@@ -113,15 +113,54 @@
     &__article {
       margin-bottom: 72px;
     }
+    &__image-big {
+      cursor: pointer;
+    }
     &__popup {
       &--active {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         height: 100vh;
         width: 100%;
         background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(4px);
         z-index: 10;
+      }
+      &-description{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        white-space: nowrap;
+        transform: translateX(-50%);
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 12px 24px;
+        border-radius: 8px;
+      }
+      &-icon-container{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 10%;
+        right: 10%;
+        background-color:rgba(95, 95, 95, 0.5);
+        cursor: pointer;
+        border-radius: 50%;
+        transition: .3s linear;
+        &:hover{
+            background-color:  rgba(255, 255, 255, 0.5);
+        }
+      }
+      &-image{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-height: 80vh;
+        border: 1px solid rgb(126, 126, 126);
       }
     }
   }
