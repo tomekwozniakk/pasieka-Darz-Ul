@@ -67,6 +67,9 @@
   }
   &__popup {
     display: none;
+    &--active{
+      display: none;
+    }
   }
   &__slider {
     width: 40px;
