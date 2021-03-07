@@ -6,8 +6,10 @@ import "../scss/main.scss";
 
 /* place your code below */
 
-function requireAll(r) { r.keys().forEach(r); }
-requireAll(require.context('../assets/img/', true));
+function requireAll(r) {
+  r.keys().forEach(r);
+}
+requireAll(require.context("../assets/img/", true));
 
 // slider in "about" section
 
@@ -45,53 +47,64 @@ const articleWidth = articles[0].getBoundingClientRect().width;
 const articleGap = 16;
 console.log(articleWidth);
 
-
 // add event listeners on buttons
 
-BtnLeft.addEventListener("click", throttle(function() {
-  if(i===0){
-    return;
-  }
-  articlesContainer.scrollBy(-(articleWidth + articleGap), 0);
-  circles[i].classList.remove("about__circle--active");
-  i--;
-  circles[i].classList.add("about__circle--active");
-  let header = articles[i].querySelector(".about__images");
-  header.innerHTML = `<div class="about__image-container">
-              <img src="img/party_time.jpg" alt="j" class="about__image about__image--first">
-            </div>
-            <div class="about__image-container">
-              <img src="img/smoke.jpg" alt="j" class="about__image about__image--second">
-            </div>
-            <div class="about__image-container">
-              <img src="img/working_in_sunset.jpg" alt="j" class="about__image about__image--third">
-            </div>`;
-  switcher();
-  console.log(i);
-}, 500));
+BtnLeft.addEventListener(
+  "click",
+  throttle(function () {
+    if (i === 0) {
+      return;
+    }
+    articlesContainer.scrollBy(-(articleWidth + articleGap), 0);
+    circles[i].classList.remove("about__circle--active");
+    i--;
+    circles[i].classList.add("about__circle--active");
+    let header = articles[i].querySelector(".about__images");
+    header.innerHTML = `<div class="about__image-container">
+      <img src="img/marian.jpg" alt="Prezes pasieki we własnej osobie"
+            class="about__image about__image--first">
+      </div>
+      <div class="about__image-container">
+      <img src="img/working_in_sunset.jpg" alt="Marian pracuje przy ulach na tle zachodzącego słońca"
+      class="about__image about__image--second">
+      </div>
+      <div class="about__image-container">
+      <img src="img/irena.jpg"
+      alt="Prezesowa pasieki we własnej osobie" class="about__image about__image--third">
+      </div>`;
+    switcher();
+    console.log(i);
+  }, 500)
+);
 
-BtnRight.addEventListener("click", throttle(function() {
-  if(i === articles.length - 1){
-    return;
-  }
-  articlesContainer.scrollBy(articleWidth + articleGap, 0);
+BtnRight.addEventListener(
+  "click",
+  throttle(function () {
+    if (i === articles.length - 1) {
+      return;
+    }
+    articlesContainer.scrollBy(articleWidth + articleGap, 0);
 
-  circles[i].classList.remove("about__circle--active");
-  i++;
-  circles[i].classList.add("about__circle--active");
-  let header = articles[i].querySelector(".about__images");
-  header.innerHTML = `<div class="about__image-container">
-              <img src="img/party_time.jpg" alt="j" class="about__image about__image--first">
-            </div>
-            <div class="about__image-container">
-              <img src="img/smoke.jpg" alt="j" class="about__image about__image--second">
-            </div>
-            <div class="about__image-container">
-              <img src="img/working_in_sunset.jpg" alt="j" class="about__image about__image--third">
-            </div>`;
-  switcher();
-  console.log(i);
-}, 500));
+    circles[i].classList.remove("about__circle--active");
+    i++;
+    circles[i].classList.add("about__circle--active");
+    let header = articles[i].querySelector(".about__images");
+    header.innerHTML = `<div class="about__image-container">
+        <img src="img/marian.jpg" alt="Prezes pasieki we własnej osobie"
+        class="about__image about__image--first">
+        </div>
+        <div class="about__image-container">
+        <img src="img/working_in_sunset.jpg" alt="Marian pracuje przy ulach na tle zachodzącego słońca"
+        class="about__image about__image--second">
+        </div>
+        <div class="about__image-container">
+        <img src="img/irena.jpg"
+        alt="Prezesowa pasieki we własnej osobie" class="about__image about__image--third">
+        </div>`;
+    switcher();
+    console.log(i);
+  }, 500)
+);
 
 // switching images
 
@@ -119,137 +132,157 @@ function switcher() {
 
   switchImage(
     imageFirst,
+    ["img/herbal_board.jpg",
+     "img/smoke.jpg",
+     "img/irena2.jpg", 
+     "img/marian.jpg"],
     [
-      "img/garden.jpg",
-      "img/apples.jpg",
-      "img/table.jpg",
-      "img/party_time.jpg"
+      "Świeże zioła na stole w ogrodzie",
+      "Rozpalanie podkurzacza",
+      "Irena podczas miodobrania 2015",
+      "Prezes pasieki we własnej osobie",
+    ]
+  );
+
+  switchImage(
+    imageSecond,
+    [
+      "img/honey_jars_2.jpg",
+      "img/honeycomb.jpg",
+      "img/fence.jpg",
+      "img/working_in_sunset.jpg",
     ],
-    ["our garden", 
-    "red apples on a tree", 
-    "table with food",
-    "party in our backyard"]
+    [
+      "Słoiki miodu już z etykietami czekają na chętnych",
+      "Ramka z plastrem miodu i pszczołą",
+      "Płot widziany zza naszej działki",
+      "Marian pracuje przy ulach na tle zachodzącego słońca",
+    ]
   );
 
-  switchImage(imageSecond, [
-    "img/backyard.jpg",
-    "img/bread_sliced.jpg",
-    "img/fence.jpg",
-    "img/smoke.jpg"
-  ],
-  ["our backyard",
-  "fresh sliced bread",
-  "fence",
-  "Marian starting up a bee smoker"
-  ]
+  switchImage(
+    imageThird,
+    [
+      "img/winter_calm.jpg",
+      "img/marian2.jpg",
+      "img/vegetables.jpg",
+      "img/irena.jpg",
+    ],
+    [
+      "Nasze ule w zimie - cisza, spokój i kołderka ze śniegu",
+      "Marian pozuje z owocem pracy swojej i podopiecznych - 2015",
+      "Permakulturowe zbiory - tutaj rzodkiewka",
+      "Prezesowa pasieki we własnej osobie",
+    ]
   );
-
-  switchImage(imageThird, [
-    "img/house_sunset.jpg",
-    "img/backyard_2.jpg",
-    "img/parcel.jpg",
-    "img/working_in_sunset.jpg"
-  ],
-  ["sunset behind apihouse",
-  "our backyard",
-  "view on the backyard from the back",
-  "Marian working with beehives with sunset at the back"
-]);
 }
 
 switcher();
 
-
-let historyArticles = []
+let historyArticles = [];
 
 function getHistoryArticles() {
-  for (let i = 0; i < document.querySelectorAll(".history__article").length; i++) {
+  for (
+    let i = 0;
+    i < document.querySelectorAll(".history__article").length;
+    i++
+  ) {
     let historyArticle = document.querySelectorAll(".history__article")[i];
     historyArticles.push(historyArticle);
   }
-  
 }
 
 getHistoryArticles();
 
 // Throttle scroll function
-function throttle(callback, limit){
+function throttle(callback, limit) {
   let waiting = false;
-  return function(){
-    if(!waiting) {
+  return function () {
+    if (!waiting) {
       callback.apply(this, arguments);
       waiting = true;
-      setTimeout(function(){
-        waiting = false
+      setTimeout(function () {
+        waiting = false;
       }, limit);
     }
-  }
-};
-
+  };
+}
 
 // scroll function with implemented throttle
-window.addEventListener('scroll', throttle(function(){
-  let scrollTop = window.pageYOffset;
-  
-  for(let i = 0; i < historyArticles.length;i++ ){
-  let rect = historyArticles[i].getBoundingClientRect();
-  let top = scrollTop + rect.top;
-  console.log("scrollTop");
-  
-  if(top<=scrollTop + window.innerHeight + (historyArticles[i].offsetHeight/4)){
-    if(!historyArticles[i].classList.contains('history__article--active')){
-    historyArticles[i].classList.remove('history__article--inactive');
-    historyArticles[i].classList.remove('history__article--active');
-    void historyArticles[i].offsetWidth;
-    historyArticles[i].classList.add('history__article--active');
+window.addEventListener(
+  "scroll",
+  throttle(function () {
+    let scrollTop = window.pageYOffset;
+
+    for (let i = 0; i < historyArticles.length; i++) {
+      let rect = historyArticles[i].getBoundingClientRect();
+      let top = scrollTop + rect.top;
+      console.log("scrollTop");
+
+      if (
+        top <=
+        scrollTop + window.innerHeight + historyArticles[i].offsetHeight / 4
+      ) {
+        if (
+          !historyArticles[i].classList.contains("history__article--active")
+        ) {
+          historyArticles[i].classList.remove("history__article--inactive");
+          historyArticles[i].classList.remove("history__article--active");
+          void historyArticles[i].offsetWidth;
+          historyArticles[i].classList.add("history__article--active");
+        }
+      } else {
+        if (
+          !historyArticles[i].classList.contains("history__article--inactive")
+        ) {
+          historyArticles[i].classList.remove("history__article--active");
+          historyArticles[i].classList.remove("history__article--inactive");
+          void historyArticles[i].offsetWidth;
+          historyArticles[i].classList.add("history__article--inactive");
+        }
+      }
     }
-  }
-  else{
-    if(!historyArticles[i].classList.contains('history__article--inactive')){
-      historyArticles[i].classList.remove('history__article--active');
-    historyArticles[i].classList.remove('history__article--inactive');
-    void historyArticles[i].offsetWidth;
-    historyArticles[i].classList.add('history__article--inactive');
-      ;
-    } 
- 
-}
-}
-}, 200));
+  }, 200)
+);
 
 // Gallery slider
 const gap = 16;
 const imgWidth = 180;
 
-const carousel = document.querySelector('.gallery__carousel');
-const prev = document.querySelector('.gallery__slider-previous');
-const next = document.querySelector('.gallery__slider-next');
+const carousel = document.querySelector(".gallery__carousel");
+const prev = document.querySelector(".gallery__slider-previous");
+const next = document.querySelector(".gallery__slider-next");
 
-next.addEventListener("click", function(e){
+next.addEventListener("click", function (e) {
   carousel.scrollBy(imgWidth + gap, 0);
-})
+});
 
-prev.addEventListener("click", function(e){
+prev.addEventListener("click", function (e) {
   carousel.scrollBy(-(imgWidth + gap), 0);
-})
+});
 
 // gallery swap big image on click
 
-let imagesSmall = []
+let imagesSmall = [];
 
-function getImages(){
-  for(let i = 0; i < document.querySelectorAll('.gallery__image-small').length; i++){
-    let imageSmall = document.querySelectorAll('.gallery__image-small')[i];
+function getImages() {
+  for (
+    let i = 0;
+    i < document.querySelectorAll(".gallery__image-small").length;
+    i++
+  ) {
+    let imageSmall = document.querySelectorAll(".gallery__image-small")[i];
     imagesSmall.push(imageSmall);
   }
 }
 getImages();
 
-let imageBig = document.querySelector('.gallery__image-big');
+let imageBig = document.querySelector(".gallery__image-big");
 
-for(let i = 0; i < imagesSmall.length; i++){
-  imagesSmall[i].addEventListener('click', function(){
-    imageBig.src = this.src;
+for (let i = 0; i < imagesSmall.length; i++) {
+  imagesSmall[i].addEventListener("click", function () {
+    let newSource = `${this.src.slice(0, -11)}.jpg`;
+    imageBig.src = newSource;
     imageBig.alt = this.alt;
-  })
+  });
 }

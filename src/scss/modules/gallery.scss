@@ -9,12 +9,11 @@
   background-position: bottom center;
   position: relative;
   &__article {
-    background-color:$gallery-background;
+    background-color: $gallery-background;
     width: 100%;
     max-width: 996px;
     padding: 16px 0 36px;
     backdrop-filter: blur(8px);
-    
   }
   &__carousel {
     overflow: auto;
@@ -56,15 +55,18 @@
     border-radius: 8px;
   }
   &__image-small {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
     object-fit: cover;
     border-radius: 8px;
   }
   &__image-container--small {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
     cursor: pointer;
+  }
+  &__popup {
+    display: none;
   }
   &__slider {
     width: 40px;
@@ -77,13 +79,13 @@
     border: none;
     position: absolute;
     top: 50%;
-    transition: .3s linear;
+    transition: 0.3s linear;
     background-color: rgba(255, 255, 255, 0.6);
-    &:focus{
+    &:focus {
       outline: 1px solid #bbb;
     }
-    &:hover{
-        background-color: rgba(255, 255, 255, 0.9);
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.9);
     }
 
     &-arrow {
@@ -102,14 +104,25 @@
     width: 100%;
     position: relative;
     margin: 0 auto;
-    padding:0 16px;
+    padding: 0 16px;
   }
 }
 
-@media(min-width:768px) {
-  .gallery{
-    &__article{
+@media (min-width: 768px) {
+  .gallery {
+    &__article {
       margin-bottom: 72px;
+    }
+    &__popup {
+      &--active {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 10;
+      }
     }
   }
 }
