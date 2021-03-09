@@ -281,7 +281,9 @@ let imageBig = document.querySelector('.gallery__image-big');
 let imagePopup = document.querySelector('.gallery__popup-image');
 let popup = document.querySelector('.gallery__popup');
 let popupText = document.querySelector('.gallery__popup-description');
-let cross = document.querySelector('.gallery__popup-icon-container')
+let cross = document.querySelector('.gallery__popup-icon-container');
+let popupPrevious = document.querySelector('.gallery__popup-slider--previous');
+let popupNext = document.querySelector('.gallery__popup-slider--next');
 
 for (let i = 0; i < imagesSmall.length; i++) {
   imagesSmall[i].addEventListener("click", function () {
@@ -304,4 +306,38 @@ cross.addEventListener("click", function(){
   document.body.classList.remove('modal-open');
   popup.classList.remove('gallery__popup--active');
   popup.classList.add('gallery__popup');
+})
+
+popupPrevious.addEventListener('click', function(){
+  for (let i = 0; i < imagesSmall.length; i++){
+    if(`${imagesSmall[i].src.slice(0, -11)}.jpg` === imagePopup.src){
+      if(i>0){
+        i--;
+        console.log(i);
+        imagePopup.src = `${imagesSmall[i].src.slice(0, -11)}.jpg`;
+        imagePopup.alt = imagesSmall[i].alt;
+        popupText.innerHTML = imagePopup.alt;
+      } else{
+       return;
+      }
+    }
+  }
+})
+
+popupNext.addEventListener('click', function(){
+  for (let i = 0; i < imagesSmall.length; i++){
+    if(`${imagesSmall[i].src.slice(0, -11)}.jpg` === imagePopup.src){
+      if(i === imagesSmall.length - 1){
+        return;
+      }
+      else{
+        i++;
+        console.log(i);
+        imagePopup.src = `${imagesSmall[i].src.slice(0, -11)}.jpg`;
+        imagePopup.alt = imagesSmall[i].alt;
+        popupText.innerHTML = imagePopup.alt;
+        return;
+      }
+    }
+  }
 })
