@@ -1,3 +1,4 @@
+import { setTimeout } from "core-js";
 import "../scss/main.scss";
 
 // uncomment the lines below to enable PWA
@@ -180,14 +181,15 @@ function switcher() {
 switcher();
 
 let historyArticles = [];
+let imgUrls = [];
 
 function getHistoryArticles() {
   for (
     let i = 0;
-    i < document.querySelectorAll(".history__article").length;
+    i < document.querySelectorAll(".timeline__element").length;
     i++
   ) {
-    let historyArticle = document.querySelectorAll(".history__article")[i];
+    let historyArticle = document.querySelectorAll(".timeline__element")[i];
     historyArticles.push(historyArticle);
   }
 }
@@ -208,46 +210,31 @@ function throttle(callback, limit) {
   };
 }
 
+
 // scroll function with implemented throttle
 window.addEventListener(
   "scroll",
   throttle(function () {
-    let scrollTop = window.pageYOffset;
-
-    for (let i = 0; i < historyArticles.length; i++) {
-      let rect = historyArticles[i].getBoundingClientRect();
-      let top = scrollTop + rect.top;
-      console.log("scrollTop");
-
-      if (
-        top <=
-        scrollTop + window.innerHeight + historyArticles[i].offsetHeight / 4
-      ) {
-        if (
-          !historyArticles[i].classList.contains("history__article--active")
-        ) {
-          historyArticles[i].classList.remove("history__article--inactive");
-          historyArticles[i].classList.remove("history__article--active");
-          void historyArticles[i].offsetWidth;
-          historyArticles[i].classList.add("history__article--active");
-        }
+    let scrollTop = window.pageYOffset - 50;
+    for(let i = 0; i<historyArticles.length; i++){
+      let articleTitle = historyArticles[i].querySelector('.timeline__content-title');
+      let articleTop = historyArticles[i].getBoundingClientRect().top + scrollTop - 200;
+      if(articleTop <= scrollTop){
+        historyArticles[i].classList.add('timeline__element--active');
+        articleTitle.classList.add('timeline__content-title--active');
+        
       } else {
-        if (
-          !historyArticles[i].classList.contains("history__article--inactive")
-        ) {
-          historyArticles[i].classList.remove("history__article--active");
-          historyArticles[i].classList.remove("history__article--inactive");
-          void historyArticles[i].offsetWidth;
-          historyArticles[i].classList.add("history__article--inactive");
-        }
-      }
+        historyArticles[i].classList.remove('timeline__element--active');
+        articleTitle.classList.remove('timeline__content-title--active');
+      }  
     }
-  }, 200)
+    
+  }, 50)
 );
 
 // Gallery slider
 const gap = 16;
-const imgWidth = 180;
+const imgWidth = 160;
 
 const carousel = document.querySelector(".gallery__carousel");
 const prev = document.querySelector(".gallery__slider-previous");

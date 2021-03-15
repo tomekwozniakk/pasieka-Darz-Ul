@@ -166,6 +166,7 @@
         background-color: rgba(255, 255, 255, 0.8);
         padding: 12px 24px;
         border-radius: 8px;
+        animation: imageDescription .2s linear 0s 1 normal both;
       }
       &-icon-container{
         width: 40px;
@@ -193,5 +194,14 @@
         border: 1px solid rgb(126, 126, 126);
       }
     }
+  }
+}
+
+
+@keyframes imageDescription {
+  from{
+    opacity: 0;
+  } to {
+    opacity: 1;
   }
 }
