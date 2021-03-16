@@ -133,10 +133,12 @@ function switcher() {
 
   switchImage(
     imageFirst,
-    ["img/herbal_board.jpg",
-     "img/smoke.jpg",
-     "img/irena2.jpg", 
-     "img/marian.jpg"],
+    [
+      "img/herbal_board.jpg",
+      "img/smoke.jpg",
+      "img/irena2.jpg",
+      "img/marian.jpg",
+    ],
     [
       "Świeże zioła na stole w ogrodzie",
       "Rozpalanie podkurzacza",
@@ -210,26 +212,45 @@ function throttle(callback, limit) {
   };
 }
 
+let activeArticles = [];
+function getActiveArticles() {
+  for (
+    let i = 0;
+    i < document.querySelectorAll(".timeline__element--active").length;
+    i++
+  ) {
+    let activeArticle = document.querySelectorAll(".timeline__element--active")[
+      i
+    ];
+    activeArticles.push(activeArticle);
+  }
+}
 
 // scroll function with implemented throttle
 window.addEventListener(
   "scroll",
   throttle(function () {
     let scrollTop = window.pageYOffset - 50;
-    for(let i = 0; i<historyArticles.length; i++){
-      let articleTitle = historyArticles[i].querySelector('.timeline__content-title');
-      let articleTop = historyArticles[i].getBoundingClientRect().top + scrollTop - 200;
-      if(articleTop <= scrollTop){
-        historyArticles[i].classList.add('timeline__element--active');
-        articleTitle.classList.add('timeline__content-title--active');
-        
+    let lastActiveImage = document.querySelector('.timeline__image');
+    for (let i = 0; i < historyArticles.length; i++) {
+      let articleTitle = historyArticles[i].querySelector(
+        ".timeline__content-title"
+      );
+      let articleTop =
+        historyArticles[i].getBoundingClientRect().top + scrollTop - 200;
+      if (articleTop <= scrollTop) {
+        historyArticles[i].classList.add("timeline__element--active");
+        articleTitle.classList.add("timeline__content-title--active");
+        activeArticles = [];
+        getActiveArticles();
+        lastActiveImage = activeArticles[activeArticles.length - 1].querySelector('.timeline__image');
       } else {
-        historyArticles[i].classList.remove('timeline__element--active');
-        articleTitle.classList.remove('timeline__content-title--active');
-      }  
+        historyArticles[i].classList.remove("timeline__element--active");
+        articleTitle.classList.remove("timeline__content-title--active");
+      }
     }
-    
-  }, 50)
+    document.querySelector('.history').style.backgroundImage = ` url(${lastActiveImage.src})`
+  }, 100)
 );
 
 // Gallery slider
@@ -264,13 +285,13 @@ function getImages() {
 }
 getImages();
 
-let imageBig = document.querySelector('.gallery__image-big');
-let imagePopup = document.querySelector('.gallery__popup-image');
-let popup = document.querySelector('.gallery__popup');
-let popupText = document.querySelector('.gallery__popup-description');
-let cross = document.querySelector('.gallery__popup-icon-container');
-let popupPrevious = document.querySelector('.gallery__popup-slider--previous');
-let popupNext = document.querySelector('.gallery__popup-slider--next');
+let imageBig = document.querySelector(".gallery__image-big");
+let imagePopup = document.querySelector(".gallery__popup-image");
+let popup = document.querySelector(".gallery__popup");
+let popupText = document.querySelector(".gallery__popup-description");
+let cross = document.querySelector(".gallery__popup-icon-container");
+let popupPrevious = document.querySelector(".gallery__popup-slider--previous");
+let popupNext = document.querySelector(".gallery__popup-slider--next");
 
 for (let i = 0; i < imagesSmall.length; i++) {
   imagesSmall[i].addEventListener("click", function () {
@@ -280,44 +301,43 @@ for (let i = 0; i < imagesSmall.length; i++) {
   });
 }
 
-imageBig.addEventListener("click", function(){
-  document.body.classList.add('modal-open');
-  popup.classList.remove('gallery__popup');
-  popup.classList.add('gallery__popup--active');
+imageBig.addEventListener("click", function () {
+  document.body.classList.add("modal-open");
+  popup.classList.remove("gallery__popup");
+  popup.classList.add("gallery__popup--active");
   imagePopup.src = imageBig.src;
   imagePopup.alt = imageBig.alt;
   popupText.innerHTML = imagePopup.alt;
 });
 
-cross.addEventListener("click", function(){
-  document.body.classList.remove('modal-open');
-  popup.classList.remove('gallery__popup--active');
-  popup.classList.add('gallery__popup');
-})
+cross.addEventListener("click", function () {
+  document.body.classList.remove("modal-open");
+  popup.classList.remove("gallery__popup--active");
+  popup.classList.add("gallery__popup");
+});
 
-popupPrevious.addEventListener('click', function(){
-  for (let i = 0; i < imagesSmall.length; i++){
-    if(`${imagesSmall[i].src.slice(0, -11)}.jpg` === imagePopup.src){
-      if(i>0){
+popupPrevious.addEventListener("click", function () {
+  for (let i = 0; i < imagesSmall.length; i++) {
+    if (`${imagesSmall[i].src.slice(0, -11)}.jpg` === imagePopup.src) {
+      if (i > 0) {
         i--;
         console.log(i);
         imagePopup.src = `${imagesSmall[i].src.slice(0, -11)}.jpg`;
         imagePopup.alt = imagesSmall[i].alt;
         popupText.innerHTML = imagePopup.alt;
-      } else{
-       return;
+      } else {
+        return;
       }
     }
   }
-})
+});
 
-popupNext.addEventListener('click', function(){
-  for (let i = 0; i < imagesSmall.length; i++){
-    if(`${imagesSmall[i].src.slice(0, -11)}.jpg` === imagePopup.src){
-      if(i === imagesSmall.length - 1){
+popupNext.addEventListener("click", function () {
+  for (let i = 0; i < imagesSmall.length; i++) {
+    if (`${imagesSmall[i].src.slice(0, -11)}.jpg` === imagePopup.src) {
+      if (i === imagesSmall.length - 1) {
         return;
-      }
-      else{
+      } else {
         i++;
         console.log(i);
         imagePopup.src = `${imagesSmall[i].src.slice(0, -11)}.jpg`;
@@ -327,4 +347,4 @@ popupNext.addEventListener('click', function(){
       }
     }
   }
-})
+});
