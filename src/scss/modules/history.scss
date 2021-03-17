@@ -2,8 +2,9 @@
   position: relative;
   background-image:
     url(../assets/img/elders.jpg);
-  background-position: center;
-  background-attachment: fixed;
+  background-position: top center;
+  background-attachment:fixed;
+  background-repeat: no-repeat;
   filter: sepia(30%);
   &::before{
     content: '';
@@ -37,7 +38,7 @@
   margin-bottom: 72px;
   overflow: hidden;
   background-color: $article-background;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(4px);
   &::before {
     content: "";
     width: 2px;
