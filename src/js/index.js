@@ -44,9 +44,20 @@ const BtnLeft = document.querySelector(".about__slider-button--left");
 const BtnRight = document.querySelector(".about__slider-button--right");
 const articlesContainer = document.querySelector(".about-carousel");
 let i = 0;
-const articleWidth = articles[0].getBoundingClientRect().width;
+let articleWidth = articles[0].getBoundingClientRect().width;
 const articleGap = 16;
+let scrollCounter = document.querySelector('.nav__counter');
 
+
+// event listener for resizing
+
+window.addEventListener('resize', function(){
+  articleWidth = articles[0].getBoundingClientRect().width;
+  articlesContainer.scrollTo(0, 0);
+  circles[i].classList.remove("about__circle--active");
+  i=0;
+  circles[i].classList.add("about__circle--active");
+})
 
 // add event listeners on buttons
 
@@ -60,20 +71,6 @@ BtnLeft.addEventListener(
     circles[i].classList.remove("about__circle--active");
     i--;
     circles[i].classList.add("about__circle--active");
-    let header = articles[i].querySelector(".about__images");
-    header.innerHTML = `<div class="about__image-container">
-      <img src="img/marian.jpg" alt="Prezes pasieki we własnej osobie"
-            class="about__image about__image--first">
-      </div>
-      <div class="about__image-container">
-      <img src="img/working_in_sunset.jpg" alt="Marian pracuje przy ulach na tle zachodzącego słońca"
-      class="about__image about__image--second">
-      </div>
-      <div class="about__image-container">
-      <img src="img/irena.jpg"
-      alt="Prezesowa pasieki we własnej osobie" class="about__image about__image--third">
-      </div>`;
-    switcher();
   }, 500)
 );
 
@@ -88,20 +85,6 @@ BtnRight.addEventListener(
     circles[i].classList.remove("about__circle--active");
     i++;
     circles[i].classList.add("about__circle--active");
-    let header = articles[i].querySelector(".about__images");
-    header.innerHTML = `<div class="about__image-container">
-        <img src="img/marian.jpg" alt="Prezes pasieki we własnej osobie"
-        class="about__image about__image--first">
-        </div>
-        <div class="about__image-container">
-        <img src="img/working_in_sunset.jpg" alt="Marian pracuje przy ulach na tle zachodzącego słońca"
-        class="about__image about__image--second">
-        </div>
-        <div class="about__image-container">
-        <img src="img/irena.jpg"
-        alt="Prezesowa pasieki we własnej osobie" class="about__image about__image--third">
-        </div>`;
-    switcher();
   }, 500)
 );
 
@@ -124,10 +107,10 @@ function switchImage(image, urls, alts) {
 }
 
 function switcher() {
-  let activeArticle = articles[i];
-  let imageFirst = activeArticle.querySelector(".about__image--first");
-  let imageSecond = activeArticle.querySelector(".about__image--second");
-  let imageThird = activeArticle.querySelector(".about__image--third");
+  for(let i=0; i<articles.length;i++){
+    let imageFirst = articles[i].querySelector(".about__image--first");
+  let imageSecond = articles[i].querySelector(".about__image--second");
+  let imageThird = articles[i].querySelector(".about__image--third");
 
   switchImage(
     imageFirst,
@@ -176,6 +159,7 @@ function switcher() {
       "Prezesowa pasieki we własnej osobie",
     ]
   );
+  }
 }
 
 switcher();
@@ -247,7 +231,21 @@ function preloadImages(){
 
 preloadImages();
 
-
+// scroll function on scrollcounter
+let scrollBottom;
+let pageHeight;
+window.addEventListener("scroll", function(){
+  scrollBottom = window.pageYOffset+window.innerHeight;
+  pageHeight = document.documentElement.scrollHeight;
+  if(window.pageYOffset<window.innerHeight){
+    scrollCounter.style.display = 'none';
+  }
+  else{
+    scrollCounter.style.display = 'block';
+    scrollCounter.style.width = `${(scrollBottom/pageHeight)*100}%`;
+    
+  }
+})
 
 
 // scroll function with implemented throttle
@@ -255,7 +253,6 @@ window.addEventListener(
   "scroll",
   throttle(function () {
     let section = document.querySelector(".history");
-    
     let scrollTop = window.pageYOffset - 50;
     let lastActiveImage = preloadedImages[0];
     
@@ -277,7 +274,7 @@ window.addEventListener(
       
     }
     
-  }, 100)
+  }, 50)
 );
 
 // Gallery slider
