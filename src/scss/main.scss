@@ -15,11 +15,13 @@ html {
   font-family: "Lato", sans-serif;
   scroll-behavior: smooth;
   box-sizing: border-box;
+  
 }
 
 * {
   box-sizing: inherit;
 }
+
 
 .arrow {
   width: 40px;
@@ -57,9 +59,8 @@ html {
   flex-direction: column;
 }
 
-
 @media (min-width: 768px) {
-.modal-open{
-  overflow: hidden;
-}
+  .modal-open {
+    overflow: hidden;
+  }
 }

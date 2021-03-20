@@ -2,10 +2,11 @@
   position: relative;
   background-image:
     url(../assets/img/elders.jpg);
-  background-position: top center;
+  background-position:center 15%;
   background-attachment:fixed;
   background-repeat: no-repeat;
   filter: sepia(30%);
+  
   &::before{
     content: '';
     position: absolute;
@@ -110,6 +111,8 @@
         text-align: left;
         padding-left: 12px;
         padding-right: 0;
+        & .timeline__content-description {
+          padding-right: 48px;}
         & .timeline__content-title {
           padding-left: 48px;
           &--active{
@@ -121,6 +124,8 @@
         & .timeline__image{
           align-self: flex-end;
         }
+        & .timeline__content-description {
+          padding-left: 48px;}
         & .timeline__content-title {
         &::before {
           left: auto;
@@ -130,3 +135,4 @@
     }}
   }
 }
+

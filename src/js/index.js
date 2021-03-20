@@ -46,7 +46,7 @@ const articlesContainer = document.querySelector(".about-carousel");
 let i = 0;
 const articleWidth = articles[0].getBoundingClientRect().width;
 const articleGap = 16;
-console.log(articleWidth);
+
 
 // add event listeners on buttons
 
@@ -74,7 +74,6 @@ BtnLeft.addEventListener(
       alt="Prezesowa pasieki we własnej osobie" class="about__image about__image--third">
       </div>`;
     switcher();
-    console.log(i);
   }, 500)
 );
 
@@ -103,7 +102,6 @@ BtnRight.addEventListener(
         alt="Prezesowa pasieki we własnej osobie" class="about__image about__image--third">
         </div>`;
     switcher();
-    console.log(i);
   }, 500)
 );
 
@@ -212,6 +210,8 @@ function throttle(callback, limit) {
   };
 }
 
+// get active articles
+
 let activeArticles = [];
 function getActiveArticles() {
   for (
@@ -226,16 +226,41 @@ function getActiveArticles() {
   }
 }
 
+// preload images
+let images = [];
+function getActiveImages(){
+  for(let i=0; i<historyArticles.length; i++){
+    let image = historyArticles[i].querySelector('.timeline__image');
+    images.push(image);
+  }
+}
+getActiveImages();
+
+let preloadedImages = [];
+
+function preloadImages(){
+  for(let i=0; i<historyArticles.length; i++){
+    preloadedImages[i] = new Image();
+    preloadedImages[i].src = images[i].src;
+  }
+}
+
+preloadImages();
+
+
+
+
 // scroll function with implemented throttle
 window.addEventListener(
   "scroll",
   throttle(function () {
+    let section = document.querySelector(".history");
+    
     let scrollTop = window.pageYOffset - 50;
-    let lastActiveImage = document.querySelector('.timeline__image');
-    for (let i = 0; i < historyArticles.length; i++) {
-      let articleTitle = historyArticles[i].querySelector(
-        ".timeline__content-title"
-      );
+    let lastActiveImage = preloadedImages[0];
+    
+    for(let i = 0; i < historyArticles.length; i++) {
+      let articleTitle = historyArticles[i].querySelector(".timeline__content-title");
       let articleTop =
         historyArticles[i].getBoundingClientRect().top + scrollTop - 200;
       if (articleTop <= scrollTop) {
@@ -243,13 +268,15 @@ window.addEventListener(
         articleTitle.classList.add("timeline__content-title--active");
         activeArticles = [];
         getActiveArticles();
-        lastActiveImage = activeArticles[activeArticles.length - 1].querySelector('.timeline__image');
+        lastActiveImage = preloadedImages[activeArticles.length - 1];
+        section.style.backgroundImage = ` url(${lastActiveImage.src})`;
       } else {
         historyArticles[i].classList.remove("timeline__element--active");
         articleTitle.classList.remove("timeline__content-title--active");
       }
+      
     }
-    document.querySelector('.history').style.backgroundImage = ` url(${lastActiveImage.src})`
+    
   }, 100)
 );
 
@@ -321,7 +348,6 @@ popupPrevious.addEventListener("click", function () {
     if (`${imagesSmall[i].src.slice(0, -11)}.jpg` === imagePopup.src) {
       if (i > 0) {
         i--;
-        console.log(i);
         imagePopup.src = `${imagesSmall[i].src.slice(0, -11)}.jpg`;
         imagePopup.alt = imagesSmall[i].alt;
         popupText.innerHTML = imagePopup.alt;
@@ -339,7 +365,6 @@ popupNext.addEventListener("click", function () {
         return;
       } else {
         i++;
-        console.log(i);
         imagePopup.src = `${imagesSmall[i].src.slice(0, -11)}.jpg`;
         imagePopup.alt = imagesSmall[i].alt;
         popupText.innerHTML = imagePopup.alt;
@@ -348,3 +373,4 @@ popupNext.addEventListener("click", function () {
     }
   }
 });
+
