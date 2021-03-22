@@ -51,12 +51,17 @@ let scrollCounter = document.querySelector('.nav__counter');
 
 // event listener for resizing
 
+let windowWidth = window.innerWidth;
+
 window.addEventListener('resize', function(){
+  let newWindowWidth = window.innerWidth;
+  if(newWindowWidth !== windowWidth){
   articleWidth = articles[0].getBoundingClientRect().width;
   articlesContainer.scrollTo(0, 0);
   circles[i].classList.remove("about__circle--active");
   i=0;
-  circles[i].classList.add("about__circle--active");
+  circles[i].classList.add("about__circle--active");}
+  else{return}
 })
 
 // add event listeners on buttons
@@ -277,6 +282,42 @@ window.addEventListener(
   }, 50)
 );
 
+// offer section popup
+
+const popupOffer = document.querySelector('.offer__popup-wrapper');
+const popupOfferImg = document.querySelector('.offer__popup-image');
+const popupOfferDescr = document.querySelector('.offer__popup-description');
+let offerElements = [];
+const close = document.querySelector('.offer__popup-icon-container');
+
+function getOfferElements(){
+  for(let i=0; i < document.querySelectorAll(".offer__element").length;
+  i++){
+    let offerElement = document.querySelectorAll(".offer__element")[i];
+    offerElements.push(offerElement);
+    
+  }
+}
+getOfferElements();
+
+for (let i = 0; i < offerElements.length; i++) {
+  offerElements[i].addEventListener("click", function () {
+    document.body.classList.add("modal-open");
+    popupOffer.classList.remove('offer__popup-wrapper');
+    popupOffer.classList.add('offer__popup-wrapper--active');
+    let newSrc = window.getComputedStyle(offerElements[i]).backgroundImage.slice(5,-2);
+    popupOfferImg.src = newSrc;
+    popupOfferDescr.innerHTML = offerElements[i].querySelector('.offer__element-description').innerHTML;
+  }
+  )}
+
+  close.addEventListener("click", function(){
+    document.body.classList.remove("modal-open");
+    popupOffer.classList.add('offer__popup-wrapper');
+    popupOffer.classList.remove('offer__popup-wrapper--active');
+  })
+
+
 // Gallery slider
 const gap = 16;
 const imgWidth = 160;
@@ -326,12 +367,14 @@ for (let i = 0; i < imagesSmall.length; i++) {
 }
 
 imageBig.addEventListener("click", function () {
+  if(window.innerWidth >= 768){
   document.body.classList.add("modal-open");
   popup.classList.remove("gallery__popup");
   popup.classList.add("gallery__popup--active");
   imagePopup.src = imageBig.src;
   imagePopup.alt = imageBig.alt;
   popupText.innerHTML = imagePopup.alt;
+  } else{return}
 });
 
 cross.addEventListener("click", function () {

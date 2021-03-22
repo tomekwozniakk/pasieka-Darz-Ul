@@ -1,0 +1,175 @@
+.offer {
+  margin-top: 54px;
+  position: relative;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0) 10%,
+      rgba(255, 255, 255, 0) 90%,
+      rgba(255, 255, 255, 0.9) 100%
+    ),
+    url(../assets/img/wildflowers.jpg);
+  background-position: left center;
+  &__container {
+    // width: 80%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  &__element {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    &:hover.offer__element::before {
+      background-color: rgba(255, 255, 255, 0);
+    }
+    &:hover .offer__element-title {
+      transform: translateY(25%);
+    }
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.4);
+      transition: 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    &:nth-child(1) {
+      background-image: url(../assets/img/honey__brick.png);
+    }
+    &:nth-child(2) {
+      background: url(../assets/img/pollen__brick.png);
+      background-position: bottom center;
+    }
+    &:nth-child(3) {
+      background: url(../assets/img/bee-bread__brick.png);
+      background-position: bottom center;
+    }
+    &:nth-child(4) {
+      background: url(../assets/img/apitherapy__brick.png);
+      background-position: bottom right;
+    }
+    &:nth-child(5) {
+      background: url(../assets/img/class__brick.png);
+      background-position: top right;
+    }
+    &:nth-child(6) {
+      background: url(../assets/img/education__brick.png);
+      background-position: bottom center;
+    }
+    &-description {
+      display: none;
+    }
+    &-title {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      padding: 16px 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      z-index: 2;
+      transition: 0.6s ease-in-out;
+      transform: translateY(0);
+    }
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 36px;
+    &-title {
+      font-size: 32px;
+      text-align: center;
+    }
+  }
+  &__popup-content {
+      width: 100%;
+      max-width: 768px;
+      min-height: 100vh;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+  }
+  &__popup-description{
+      text-align: center;
+  }
+  &__popup-icon-container{
+    width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 10%;
+        right: 10%;
+        background-color:rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+        border-radius: 50%;
+        transition: .3s linear;
+        &:hover{
+            background-color: rgba(175, 175, 175, 0.7) ;
+        }
+  }
+  &__popup-image{
+      max-width: 100%;
+      max-height: 250px;
+  }
+  &__popup-wrapper {
+    display: none;
+    &--active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: scroll;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 10;
+    }
+  }
+  &__wrapper {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 64px;
+    padding: 16px 0;
+    background-color: $gallery-background;
+  }
+}
+
+@media (min-width: 600px) {
+  .offer {
+    &__container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .offer {
+    &__container {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}

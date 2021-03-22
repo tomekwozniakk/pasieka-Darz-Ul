@@ -52,10 +52,10 @@
     flex-direction: column;
     &-title {
       position: relative;
-      padding-right: 48px;
+      padding-left: 12px;
       transition: .6s ease-in-out;
       &--active{
-        padding-right: 0;
+        padding-left: 0;
       }
       &::before {
         content: "";
@@ -96,6 +96,11 @@
     }
     &__content {
       &-title {
+      padding-right: 48px;
+      transition: .6s ease-in-out;
+      &--active{
+        padding-right: 0;
+      }
         &::before {
           left: -12px - 1px;
         }
