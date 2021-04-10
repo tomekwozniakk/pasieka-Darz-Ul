@@ -235,6 +235,7 @@ function preloadImages(){
 }
 
 preloadImages();
+console.log(preloadedImages)
 
 // scroll function on scrollcounter
 let scrollBottom;
@@ -258,13 +259,13 @@ window.addEventListener(
   "scroll",
   throttle(function () {
     let section = document.querySelector(".history");
-    let scrollTop = window.pageYOffset - 50;
+    let scrollTop = window.pageYOffset;
     let lastActiveImage = preloadedImages[0];
     
     for(let i = 0; i < historyArticles.length; i++) {
       let articleTitle = historyArticles[i].querySelector(".timeline__content-title");
       let articleTop =
-        historyArticles[i].getBoundingClientRect().top + scrollTop - 200;
+        historyArticles[i].getBoundingClientRect().top + scrollTop - 300;
       if (articleTop <= scrollTop) {
         historyArticles[i].classList.add("timeline__element--active");
         articleTitle.classList.add("timeline__content-title--active");
@@ -279,7 +280,7 @@ window.addEventListener(
       
     }
     
-  }, 50)
+  }, 200)
 );
 
 // offer section popup
