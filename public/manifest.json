@@ -1,8 +1,8 @@
 {
-  "name": "WTF: PWA",
-  "short_name": "WTF: PWA",
-  "theme_color": "#2D2241",
-  "background_color": "#2D2241",
+  "name": "Pasieka Darz Ul",
+  "short_name": "Pasieka Darz Ul",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
