@@ -235,7 +235,7 @@ function preloadImages(){
 }
 
 preloadImages();
-console.log(preloadedImages)
+// console.log(preloadedImages)
 
 // scroll function on scrollcounter
 let scrollBottom;
@@ -280,7 +280,7 @@ window.addEventListener(
       
     }
     
-  }, 200)
+  }, 20)
 );
 
 // offer section popup
